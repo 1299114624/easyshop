@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.shop-box{
+    width: 300px;
+    box-sizing: border-box;
+    border: 1px solid;
+    padding: 5px;
+    margin: 5px;
+}
+.shop-box input {
+    width: 50px;
+    margin-right: 20px;
+}
+.shop-list {
+    list-style: none;
+    padding: 0;
+}
+.shop-list > li{
+    box-sizing: border-box;
+    width: 300px;
+    height: 25px;
+}
+a {
+    display: block;
+    width: 100px;
+    text-align: center;
+    margin:10px;
+    text-decoration: none;
+    border: 1px solid;
+    background: red;
+    padding: 5px;
+    color:#fff;
+}

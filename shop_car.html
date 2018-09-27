@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+    <div class="contain">
+        <!-- <div class="shop-box">
+            <ul class="shop-list">
+                <li>商品名称: <span>1</span></li>
+                <li>商品单价: <span>5</span></li>
+                <li>商品数量: <span>3</span></li>
+                <li>商品总价: <span>4</span></li>
+            </ul>
+            <input type="text">
+            <button>加入购物车</button>
+        </div> -->
+    </div>
+    <script src="js/ajax.js"></script>
+    <script>
+        sendAjax(showShopCar);
+        function showShopCar(arr){
+            var $contain =document.querySelector('.contain')
+            for(var i =0;i<arr.length;i++){
+                var shopId='_'+arr[i].id;
+                if(localStorage[shopId]){
+                    var $div=document.createElement('div'); 
+                    $div.className='shop-box';
+                    $div.index=i;
+                    $div.innerHTML=`
+                    <ul class="shop-list">
+                        <li>商品名称: <span>${arr[i].name}</span></li>
+                        <li>商品单价: <span>${arr[i].price}元</span></li>
+                        <li>商品数量: <span>${localStorage[shopId]}个</span></li>
+                        <li>商品总价: <span>${localStorage[shopId]*arr[i].price}元</span></li>
+                    </ul>`
+                    $contain.appendChild($div);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
