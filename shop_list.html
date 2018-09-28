@@ -22,41 +22,10 @@
         </div> -->
     </div>
     <a href="shop_car.html" rel="external nofollow" >查看购物车</a>
-    <script src="js/ajax.js"></script>
+    <script src="js/ajax2.0.0.js"></script>
+    <script src="js/list.js"></script>
     <script>
-        localStorage.clear();
-        sendAjax(showTable);
-        function showTable(arr){
-            var $contain =document.querySelector('.contain')
-            for(var i =0;i<arr.length;i++){
-                var $div=document.createElement('div');
-                $div.className='shop-box';
-                $div.index=i;
-                $div.innerHTML=`
-                <ul class="shop-list">
-                    <li>商品名称: <span>${arr[i].name}</span></li>
-                    <li>商品价格: <span>${arr[i].price}</span></li>
-                    <li>商品颜色: <span>${arr[i].color}</span></li>
-                    <li>商品备注: <span>${arr[i].ps}</span></li>
-                </ul>
-                <input type="text">
-                <button>加入购物车</button>`
-                $contain.appendChild($div);
-            }
-            
-            $contain.onclick=function(ev){
-                ev=ev||window.event;
-                var target=ev.target||ev.srcElement;
-                if(target.nodeName=='BUTTON'){
-                    var shopId ='_'+arr[target.parentNode.index].id;
-                    // console.log(shopId)
-                    // JSON.parse(localStorage[shopId]);
-                    localStorage[shopId]=target.previousElementSibling.value;
-                    console.log(target.previousElementSibling.value);
-                    alert('添加成功');
-                }
-            }
-        }
+        shopList.init('.contain');
     </script>
 </body>
 
