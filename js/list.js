@@ -38,16 +38,16 @@ var shopList=(function(){
                                 <li>商品颜色: <span>${data[i].color}</span></li>
                                 <li>商品备注: <span>${data[i].ps}</span></li>
                             </ul>
-                            <input type="text">
+                            <input type="number">
                             <button attr-id=${data[i].id}>加入购物车</button>
                         </div>`)
             }
             this.$ele.innerHTML = arr.join('');
         },
         addCar(id,count){
-            console.log(99);
             var shopList=localStorage.shopList || '[]';
             shopList= JSON.parse(shopList);
+            console.log(shopList,count)
             for(var i = 0;i<shopList.length;i++){
                 if(shopList[i].id==id){
                     console.log(shopList[i].count,count)
@@ -55,7 +55,7 @@ var shopList=(function(){
                     break;
                 }
             }
-            if(i = shopList.length){
+            if(i == shopList.length){
                 shopList.push({id:id,count:count});
             }
             localStorage.shopList = JSON.stringify(shopList);
