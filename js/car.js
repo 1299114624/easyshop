@@ -2,8 +2,8 @@ var shopCar=(function(){
     return {
         init(ele){
             this.$ele = document.querySelector(ele);
-            this.event();
             this.getShopList();
+            this.event();
         },
         event(){
             var _this = this;
@@ -13,6 +13,12 @@ var shopCar=(function(){
                 if(target.nodeName=='BUTTON'){
                     var $tr=target.parentNode.parentNode;
                     _this.$ele.removeChild($tr);
+                }
+                if(target.nodeName=='INPUT'){
+                    target.oninput=function(){
+                        var num=parseInt(target.parentNode.previousElementSibling.innerHTML);
+                        target.parentNode.nextElementSibling.innerHTML=target.value*num;
+                    }
                 }
             }
         },
@@ -45,7 +51,7 @@ var shopCar=(function(){
                 arr.push(`  <tr class='shop-content'>
                         <td>${shop.name}</td>
                         <td>${shop.price}元</td>
-                        <td><input type="text" value=${data[i].count}>个</td>
+                        <td><input type="text" value=${data[i].count} attr-id=${data[i].id}>个</td>
                         <td>${data[i].count*shop.price}</td>
                         <td><button>删除</button></td>
                     </tr>`)
